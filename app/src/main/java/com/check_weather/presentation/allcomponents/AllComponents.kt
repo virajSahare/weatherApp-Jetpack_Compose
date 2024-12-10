@@ -369,6 +369,8 @@ class AllComponents {
                     .padding(vertical = 3.dp, horizontal = 25.dp),
                 elevation = CardDefaults.elevatedCardElevation(
                     defaultElevation = 10.dp
+                ), colors = CardDefaults.elevatedCardColors(
+                    contentColor = Color.Black
                 )
             ) {
                 Row(

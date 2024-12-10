@@ -21,7 +21,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBackIosNew
-import androidx.compose.material.icons.rounded.Checklist
 import androidx.compose.material.icons.rounded.LocationOn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -49,12 +48,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.check_weather.presentation.weatherviewmodel.SpecificCityNameViewModel
 import com.check_weather.presentation.weatherviewmodel.WeatherViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Locale
@@ -183,7 +180,6 @@ fun SpecificCityWeatherDisplayUI(
         LaunchedEffect(specificCityWeatherResult) {
             // Fetch Weather
             weatherViewModel.fetchWeather(city = specificCityWeatherResult.toString())
-
             // Fetch AQI by obtaining coordinates
             scope.launch {
                 val coordinates = getCoordinatesForCity(context, specificCityWeatherResult.toString())
@@ -193,7 +189,6 @@ fun SpecificCityWeatherDisplayUI(
                 }
             }
         }
-
         // Display UI
         WeatherDisplayUI(weatherViewModel = weatherViewModel)
     }
